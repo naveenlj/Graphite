@@ -4,75 +4,72 @@ set -x
 
 which curl >/dev/null 2>&1
 if  [ $? != 0 ]; then
-  yum install curl >/dev/null 2>&1
+  yum -y install curl >/dev/null 2>&1
 fi
 
 # Install wget if not already installed 
 which wget >/dev/null 2>&1
 if  [ $? != 0 ]; then
-  yum install wget >/dev/null 2>&1
+  yum -y install wget >/dev/null 2>&1
 fi
 
 # Install git if not already installed 
  
 which git >/dev/null 2>&1
 if  [ $? != 0 ]; then
-  yum install git >/dev/null 2>&1
+  yum -y install git >/dev/null 2>&1
+fi
+
+which epel-release >/dev/null 2>&1
+if  [ $? != 0 ]; then
+  yum -y install epel-release >/dev/null 2>&1
 fi
 
 # Install python-pip  if not already installed 
 
 which python-pip >/dev/null 2>&1
 if  [ $? != 0 ]; then
-  yum install python-pip >/dev/null 2>&1
+  yum -y install python-pip >/dev/null 2>&1
 fi
 
 which blas-devel >/dev/null 2>&1
 if  [ $? != 0 ]; then
-  yum install blas-devel >/dev/null 2>&1
+  yum -y install blas-devel >/dev/null 2>&1
 fi
 
 which lapack-devel >/dev/null 2>&1
 if  [ $? != 0 ]; then
-  yum install lapack-devel >/dev/null 2>&1
+  yum -y install lapack-devel >/dev/null 2>&1
 fi
 
 which libffi-devel >/dev/null 2>&1
 if  [ $? != 0 ]; then
-  yum install libffi-devel >/dev/null 2>&1
+  yum -y install libffi-devel >/dev/null 2>&1
 fi
 
 which httpd >/dev/null 2>&1
 if  [ $? != 0 ]; then
-  yum install httpd >/dev/null 2>&1
+  yum -y install httpd >/dev/null 2>&1
 fi
-
 
 which gcc >/dev/null 2>&1
 if  [ $? != 0 ]; then
-  yum install gcc >/dev/null 2>&1
+  yum -y install gcc >/dev/null 2>&1
 fi
-
 
 which gcc-c++ >/dev/null 2>&1
 if  [ $? != 0 ]; then
-  yum install gcc-c++ >/dev/null 2>&1
+  yum -y install gcc-c++ >/dev/null 2>&1
 fi
-
 
 which pycairo >/dev/null 2>&1
 if  [ $? != 0 ]; then
-  yum install pycairo >/dev/null 2>&1
+  yum -y install pycairo >/dev/null 2>&1
 fi
 
 which mod_wsgi >/dev/null 2>&1
 if  [ $? != 0 ]; then
-  yum install mod_wsgi >/dev/null 2>&1
-fi
-
-which epel-release >/dev/null 2>&1
-if  [ $? != 0 ]; then
-  yum install epel-release >/dev/null 2>&1
+  yum -y install mod_wsgi >/dev/null 2>&1
 fi
 
 yum -y update
