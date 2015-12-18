@@ -27,11 +27,6 @@ if  [ $? != 0 ]; then
   yum install python-pip >/dev/null 2>&1
 fi
 
-which python-pip >/dev/null 2>&1
-if  [ $? != 0 ]; then
-  yum install python-devel >/dev/null 2>&1
-fi
-
 which blas-devel >/dev/null 2>&1
 if  [ $? != 0 ]; then
   yum install blas-devel >/dev/null 2>&1
