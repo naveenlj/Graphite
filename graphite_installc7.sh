@@ -72,8 +72,6 @@ if  [ $? != 0 ]; then
   yum -y install mod_wsgi >/dev/null 2>&1
 fi
 
-yum -y update
-
 sleep 5
 
 cd /usr/local/src
