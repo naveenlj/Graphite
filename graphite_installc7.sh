@@ -137,24 +137,8 @@ sudo chown -R apache:apache /opt/graphite/static/
 
 sudo chown -R apache:apache /opt/graphite/webapp/
 
-
-" vim /etc/httpd/conf.d/graphite.conf
- 
-[...]
- Alias /static/ /opt/graphite/static/
- 
-   Require all granted
- 
-   Order allow,deny
-   Allow from all
-   Require all granted
- 
-[...] "
-
 sleep 5
 
 service carbon-cache start
  
-chkconfig httpd on
-
-service httpd start
+/opt/graphite/bin/run-graphite-devel-server.py /opt/graphite/ 
