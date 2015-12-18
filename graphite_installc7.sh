@@ -32,6 +32,11 @@ if  [ $? != 0 ]; then
   yum -y install python-pip >/dev/null 2>&1
 fi
 
+which python-devel >/dev/null 2>&1
+if  [ $? != 0 ]; then
+  yum -y install python-devel >/dev/null 2>&1
+fi
+
 which blas-devel >/dev/null 2>&1
 if  [ $? != 0 ]; then
   yum -y install blas-devel >/dev/null 2>&1
@@ -148,8 +153,8 @@ sudo chown -R apache:apache /opt/graphite/webapp/
 
 sleep 5
 
-sudo systemctl start carbon-cache
+service carbon-cache start
  
-sudo systemctl enable httpd
+chkconfig httpd on
 
-sudo systemctl start httpd
+service httpd start
