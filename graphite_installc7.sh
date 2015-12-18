@@ -32,11 +32,24 @@ if  [ $? != 0 ]; then
   yum install python-devel >/dev/null 2>&1
 fi
 
+which blas-devel >/dev/null 2>&1
+if  [ $? != 0 ]; then
+  yum install blas-devel >/dev/null 2>&1
+fi
+
+which lapack-devel >/dev/null 2>&1
+if  [ $? != 0 ]; then
+  yum install lapack-devel >/dev/null 2>&1
+fi
+
+which libffi-devel >/dev/null 2>&1
+if  [ $? != 0 ]; then
+  yum install libffi-devel >/dev/null 2>&1
+fi
+
 yum -y update
 
 yum -y install httpd gcc gcc-c++ git pycairo mod_wsgi epel-release
-
-yum -y install python-pip python-devel blas-devel lapack-devel libffi-devel
 
 cd /usr/local/src
 
