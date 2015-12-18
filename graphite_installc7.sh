@@ -47,13 +47,48 @@ if  [ $? != 0 ]; then
   yum install libffi-devel >/dev/null 2>&1
 fi
 
+which httpd >/dev/null 2>&1
+if  [ $? != 0 ]; then
+  yum install httpd >/dev/null 2>&1
+fi
+
+
+which gcc >/dev/null 2>&1
+if  [ $? != 0 ]; then
+  yum install gcc >/dev/null 2>&1
+fi
+
+
+which gcc-c++ >/dev/null 2>&1
+if  [ $? != 0 ]; then
+  yum install gcc-c++ >/dev/null 2>&1
+fi
+
+
+which pycairo >/dev/null 2>&1
+if  [ $? != 0 ]; then
+  yum install pycairo >/dev/null 2>&1
+fi
+
+which mod_wsgi >/dev/null 2>&1
+if  [ $? != 0 ]; then
+  yum install mod_wsgi >/dev/null 2>&1
+fi
+
+which epel-release >/dev/null 2>&1
+if  [ $? != 0 ]; then
+  yum install epel-release >/dev/null 2>&1
+fi
+
 yum -y update
 
-yum -y install httpd gcc gcc-c++ git pycairo mod_wsgi epel-release
+sleep 5
 
 cd /usr/local/src
 
 git clone https://github.com/graphite-project/graphite-web.git
+
+sleep 5
 
 git clone https://github.com/graphite-project/carbon.git
  
@@ -89,15 +124,15 @@ cd /opt/graphite
 
 sudo PYTHONPATH=/opt/graphite/webapp/ django-admin.py syncdb --settings=graphite.settings
 
-#reply: "Yes" and enter
-#user: root
-#passwd: myPassword
+echo 'Yes'
+echo 'root'
+echo 'Password'
  
 #import static files
 
 sudo PYTHONPATH=/opt/graphite/webapp/ django-admin.py collectstatic --settings=graphite.settings
 
-# reply "yes"
+echo 'yes'
  
 #set permission
 
@@ -107,7 +142,8 @@ sudo chown -R apache:apache /opt/graphite/static/
 
 sudo chown -R apache:apache /opt/graphite/webapp/
 
-vim /etc/httpd/conf.d/graphite.conf
+
+" vim /etc/httpd/conf.d/graphite.conf
  
 [...]
  Alias /static/ /opt/graphite/static/
@@ -118,9 +154,12 @@ vim /etc/httpd/conf.d/graphite.conf
    Allow from all
    Require all granted
  
-[...]
+[...] "
+
+sleep 5
 
 sudo systemctl start carbon-cache
  
 sudo systemctl enable httpd
+
 sudo systemctl start httpd
