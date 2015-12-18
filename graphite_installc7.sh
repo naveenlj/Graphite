@@ -81,7 +81,11 @@ pip install --upgrade pip
 
 yum install -y python-pip node npm 
 
-pip install 'django<1.6' pip install 'Twisted<12'
+pip install 'django<1.6'
+
+sleep 5
+
+pip install 'Twisted<12'
 
 sleep 5
 
