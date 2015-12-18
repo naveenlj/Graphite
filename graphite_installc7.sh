@@ -79,6 +79,10 @@ fi
 
 pip install --upgrade pip
 
+yum install -y python-pip node npm 
+
+pip install 'django<1.6' pip install 'Twisted<12'
+
 sleep 5
 
 cd /usr/local/src
